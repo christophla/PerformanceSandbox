@@ -1,4 +1,4 @@
-ab.exe -n 1000 -c 50 http://localhost:7945/products
+ab.exe -n 1000 -c 30 http://localhost:7900/products
 
 
 @Echo off

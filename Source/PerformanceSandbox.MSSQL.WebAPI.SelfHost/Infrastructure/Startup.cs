@@ -8,24 +8,28 @@
 // THE SOFTWARE.
 //=============================================================================
 
-using System;
-using Microsoft.Owin.Hosting;
-using PerformanceSandbox.MSSQL.WebAPI.SelfHost.Infrastructure;
+using System.Web.Http;
+using Owin;
+using PerformanceSandbox.MSSQL.WebAPI.SelfHost.Infrastructure.Config;
 
-namespace PerformanceSandbox.MSSQL.WebAPI.SelfHost
+namespace PerformanceSandbox.MSSQL.WebAPI.SelfHost.Infrastructure
 {
-    internal class Program
+    /// <summary>
+    ///     Application (OWIN) Startup.
+    /// </summary>
+    public class Startup
     {
-        private static void Main(string[] args)
+        /// <summary>
+        ///     Configures the application
+        /// </summary>
+        /// <param name="app">The app builder</param>
+        public void Configuration(IAppBuilder app)
         {
-            var baseAddress = "http://localhost:7901/";
+            var configuration = new HttpConfiguration();
+            ApiRouteConfig.Register(configuration);
+            FormattersConfig.Register(configuration);
 
-            // Start OWIN host 
-            WebApp.Start<Startup>(baseAddress);
-
-            Console.WriteLine("API running on: " + baseAddress);
-            Console.WriteLine("Press any key to stop...");
-            Console.ReadLine();
+            app.UseWebApi(configuration);
         }
     }
 }
