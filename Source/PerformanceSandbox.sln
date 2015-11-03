@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{756A9302-7D3D-49CA-9633-14F423CE3B59}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSSQL", "MSSQL", "{BAA405B2-4A40-4F34-8136-83D88968D411}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MongoDB", "MongoDB", "{0E64659B-8FDA-43C8-A7A0-DE0DD5E8DE88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceSandbox.MSSQL.WebAPI.IIS", "PerformanceSandbox.MSSQL.WebAPI.IIS\PerformanceSandbox.MSSQL.WebAPI.IIS.csproj", "{92A1C176-E9CD-4732-BD03-4F5661F9ECE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceSandbox.MSSQL.WebAPI.SelfHost", "PerformanceSandbox.MSSQL.WebAPI.SelfHost\PerformanceSandbox.MSSQL.WebAPI.SelfHost.csproj", "{3B650603-1E02-4007-A906-69FD04D05046}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceSandbox.MSSQL.WebAPI.DataAccess", "PerformanceSandbox.MSSQL.WebAPI.DataAccess\PerformanceSandbox.MSSQL.WebAPI.DataAccess.csproj", "{11FBA3C8-30D5-4D19-BF21-E1DA7B2F82A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceSandbox.Common", "PerformanceSandbox.Common\PerformanceSandbox.Common.csproj", "{B41ECEB7-1C0E-492D-918C-EF7B4D1E6EC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{67C92360-E760-4D06-BC39-446D9EC65625}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92A1C176-E9CD-4732-BD03-4F5661F9ECE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92A1C176-E9CD-4732-BD03-4F5661F9ECE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92A1C176-E9CD-4732-BD03-4F5661F9ECE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92A1C176-E9CD-4732-BD03-4F5661F9ECE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B650603-1E02-4007-A906-69FD04D05046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B650603-1E02-4007-A906-69FD04D05046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B650603-1E02-4007-A906-69FD04D05046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B650603-1E02-4007-A906-69FD04D05046}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11FBA3C8-30D5-4D19-BF21-E1DA7B2F82A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11FBA3C8-30D5-4D19-BF21-E1DA7B2F82A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11FBA3C8-30D5-4D19-BF21-E1DA7B2F82A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11FBA3C8-30D5-4D19-BF21-E1DA7B2F82A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B41ECEB7-1C0E-492D-918C-EF7B4D1E6EC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B41ECEB7-1C0E-492D-918C-EF7B4D1E6EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B41ECEB7-1C0E-492D-918C-EF7B4D1E6EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B41ECEB7-1C0E-492D-918C-EF7B4D1E6EC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{92A1C176-E9CD-4732-BD03-4F5661F9ECE9} = {BAA405B2-4A40-4F34-8136-83D88968D411}
+		{3B650603-1E02-4007-A906-69FD04D05046} = {BAA405B2-4A40-4F34-8136-83D88968D411}
+		{11FBA3C8-30D5-4D19-BF21-E1DA7B2F82A8} = {BAA405B2-4A40-4F34-8136-83D88968D411}
+		{B41ECEB7-1C0E-492D-918C-EF7B4D1E6EC2} = {67C92360-E760-4D06-BC39-446D9EC65625}
+	EndGlobalSection
+EndGlobal
