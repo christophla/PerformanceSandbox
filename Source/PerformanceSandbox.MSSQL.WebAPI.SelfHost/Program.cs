@@ -21,11 +21,12 @@ namespace PerformanceSandbox.MSSQL.WebAPI.SelfHost
             var baseAddress = "http://localhost:7901/";
 
             // Start OWIN host 
-            WebApp.Start<Startup>(baseAddress);
-
-            Console.WriteLine("API running on: " + baseAddress);
-            Console.WriteLine("Press any key to stop...");
-            Console.ReadLine();
+            using (var app = WebApp.Start<Startup>(baseAddress))
+            {
+                Console.WriteLine("API running on: " + baseAddress);
+                Console.WriteLine("Press any key to stop...");
+                Console.ReadLine();
+            }
         }
     }
 }
