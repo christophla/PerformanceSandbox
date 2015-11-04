@@ -1,0 +1,15 @@
+{
+  "name": "PerformanceSandbox.MongoDB.NodeJS",
+  "version": "0.0.0",
+  "description": "PerformanceSandbox.MongoDB.NodeJS",
+  "main": "server.js",
+  "author": {
+    "name": "christopher.town",
+    "email": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.2.4"
+  }
+}
