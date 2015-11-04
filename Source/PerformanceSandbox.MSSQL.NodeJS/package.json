@@ -1,0 +1,15 @@
+{
+  "name": "PerformanceSandbox.MSSQL.NodeJS",
+  "version": "0.0.0",
+  "description": "PerformanceSandbox.MSSQL.NodeJS",
+  "main": "server.js",
+  "author": {
+    "name": "christopher.town"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "sequelize": "^3.13.0",
+    "tedious": "^1.13.1"
+  }
+}
