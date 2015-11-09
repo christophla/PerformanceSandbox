@@ -39,25 +39,11 @@ mongoose.connect('mongodb://localhost/PerformanceSandbox'); // connect to our da
 
 var Product = require('./models/product');
 
-
 // ****************************************************************************
 // Routes
 //
 
 var router = express.Router();
-
-router.use((req, res, next) => {
-    console.log('Request in-progess...');
-    next();
-});
-
-router.get('/', (req, res) => {
-    res.json({ message: 'Performance Sandbox API' });
-});
-
-// ****************************************************************************
-// GET /products
-//
 
 router.route('/products')
     .get((req, res) => {
@@ -70,11 +56,6 @@ router.route('/products')
             res.json(products);
         });
     });
-
-
-// ****************************************************************************
-// GET /products/:products_id
-//
 
 router.route('/products/:product_id')
     .get(function(req, res) {
@@ -93,4 +74,4 @@ app.use('/', router);
 //
 
 app.listen(port);
-console.log(`Magic happens on port ${port}`);
+console.log('Application running!');

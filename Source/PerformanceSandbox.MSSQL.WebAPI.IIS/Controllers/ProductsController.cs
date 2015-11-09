@@ -8,8 +8,11 @@
 // THE SOFTWARE.
 //=============================================================================
 
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -21,6 +24,7 @@ namespace PerformanceSandbox.MSSQL.WebAPI.IIS.Controllers
 {
     public class ProductsController : ApiController
     {
+        private const string RetrieveProductRoute = "GetProductById";
         private readonly EntityContext _entityContext;
 
         public ProductsController()
@@ -37,7 +41,7 @@ namespace PerformanceSandbox.MSSQL.WebAPI.IIS.Controllers
         [ResponseType(typeof (IList<Product>))]
         public async Task<HttpResponseMessage> GetAllAsync()
         {
-            var products = await _entityContext.Products.ToListAsync();
+            var products = await _entityContext.Products.OrderBy(o => o.Name).Skip(0).Take(30).ToListAsync();
             return Request.CreateResponse(products);
         }
 
@@ -50,13 +54,35 @@ namespace PerformanceSandbox.MSSQL.WebAPI.IIS.Controllers
         /// <response code="403">Access was denied to the resource</response>
         /// <response code="404">A client was not found with given id</response>
         /// <response code="500">An unknown error occurred</response>
-        [Route("products/{id:long}")]
+        [Route("products/{id:long}", Name = RetrieveProductRoute)]
         [AcceptVerbs("GET")]
         [ResponseType(typeof (Product))]
         public async Task<HttpResponseMessage> GetSingleAsync(long id)
         {
             var product = await _entityContext.Products.FindAsync(id);
             return Request.CreateResponse(product);
+        }
+
+        /// <summary>
+        ///     Create a product
+        /// </summary>
+        /// <remarks>Creates a new product</remarks>
+        /// <param name="model">The product data</param>
+        /// <response code="400">Bad request</response>
+        /// <response code="401">Credentials were not provided</response>
+        /// <response code="403">Access was denied to the resource</response>
+        /// <response code="500">An unknown error occurred</response>
+        [Route("products")]
+        [AcceptVerbs("POST")]
+        public async Task<HttpResponseMessage> CreateAsync(Product model)
+        {
+            _entityContext.Products.Add(model);
+            await _entityContext.SaveChangesAsync();
+
+            var response = Request.CreateResponse(HttpStatusCode.Created);
+            var uri = Url.Link(RetrieveProductRoute, new {id = model.Id});
+            response.Headers.Location = new Uri(uri);
+            return response;
         }
     }
 }

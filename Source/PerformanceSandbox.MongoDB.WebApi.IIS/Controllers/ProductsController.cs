@@ -41,7 +41,7 @@ namespace PerformanceSandbox.MongoDB.WebApi.IIS.Controllers
             var database = _mongoClient.GetDatabase("PerformanceSandbox");
             var collection = database.GetCollection<Product>("Products");
 
-            var products = await collection.AsQueryable().ToListAsync();
+            var products = await collection.AsQueryable().Where(o => o.Archived == false).ToListAsync();
             return Request.CreateResponse(products);
         }
 

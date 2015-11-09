@@ -15,14 +15,8 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var http = require('http');
 var Sequelize = require('sequelize');
-var app = express();
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-var port = 7902; // set our port
-
 
 // ****************************************************************************
 // Database connection
@@ -64,17 +58,11 @@ var Product = sequelize.define('product', {
     updatedAt: 'modifiedAt'
 });
 
-
 // ****************************************************************************
 // Routes
 //
 
 var router = express.Router();
-
-router.use((req, res, next) => {
-    console.log('Request in-progess...');
-    next();
-});
 
 router.get('/', (req, res) => {
     res.json({ message: 'Performance Sandbox API' });
@@ -89,7 +77,7 @@ router.route('/products')
         Product.findAll().then((product) => {
             res.json(product);
         });
-});
+    });
 
 
 // ****************************************************************************
@@ -107,12 +95,19 @@ router.route('/products/:product_id')
         });
     });
 
-app.use('/', router);
-
 
 // ****************************************************************************
 // Start server
 //
 
-app.listen(port);
-console.log(`Magic happens on port ${port}`);
+var app = express();
+
+app
+    .use('/', router)
+    .use(bodyParser.urlencoded({ extended: true }))
+    .use(bodyParser.json())
+    .listen(7902, function() {
+        console.log('Running at PORT 7902');
+    });
+
+console.log('Application running!');
