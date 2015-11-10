@@ -1,6 +1,11 @@
 # PerformanceSandbox
 A performance comparison of various middle-ware and data storage configurations.
 
+## Dependencies
+This project requires that Node.JS tools for Visual Studio tools is installed.
+
+https://www.visualstudio.com/en-us/features/node-js-vs.aspx
+
 ## Installation (MSSQL)
 
 The project leverages Entity Framework code migrations to build the MSSQL database. 
