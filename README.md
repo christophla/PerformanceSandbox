@@ -19,5 +19,11 @@ The project leverages built-in controller to build the database.
     Start the PerformanceSandbox.MongoDB.WebAPI.IIS project
     Visit the url http://localhost/PerformanceSandbox.MongoDB.WebAPI.IIS/products/load
 
+## JMeter
+A JMeter configuration file can be found under /jmeter
+
+## Whitepaper
+The load results can be found under /docs.
+
 
 
