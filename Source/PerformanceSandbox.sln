@@ -30,6 +30,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceSandbox.MongoDB.
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "PerformanceSandbox.MongoDB.NodeJS", "PerformanceSandbox.MongoDB.NodeJS\PerformanceSandbox.MongoDB.NodeJS.njsproj", "{238F109C-5F3C-42EB-AB2C-2B7FDFBA80D9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DocumentDB", "DocumentDB", "{859F9615-D4E6-4902-921E-5822EB60B129}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceSandbox.DocumentDB.WebAPI.IIS", "PerformanceSandbox.DocumentDB.WebAPI.IIS\PerformanceSandbox.DocumentDB.WebAPI.IIS.csproj", "{D0BFCA02-F6F6-47CC-ABE1-3996BCFED1A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +72,10 @@ Global
 		{238F109C-5F3C-42EB-AB2C-2B7FDFBA80D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{238F109C-5F3C-42EB-AB2C-2B7FDFBA80D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{238F109C-5F3C-42EB-AB2C-2B7FDFBA80D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0BFCA02-F6F6-47CC-ABE1-3996BCFED1A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0BFCA02-F6F6-47CC-ABE1-3996BCFED1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0BFCA02-F6F6-47CC-ABE1-3996BCFED1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0BFCA02-F6F6-47CC-ABE1-3996BCFED1A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,5 +89,6 @@ Global
 		{F3A4A1A6-8656-4F28-B330-27210A2A9285} = {0E64659B-8FDA-43C8-A7A0-DE0DD5E8DE88}
 		{47E94CE6-AA80-4C0C-9366-B8B1A42FE51E} = {0E64659B-8FDA-43C8-A7A0-DE0DD5E8DE88}
 		{238F109C-5F3C-42EB-AB2C-2B7FDFBA80D9} = {0E64659B-8FDA-43C8-A7A0-DE0DD5E8DE88}
+		{D0BFCA02-F6F6-47CC-ABE1-3996BCFED1A1} = {859F9615-D4E6-4902-921E-5822EB60B129}
 	EndGlobalSection
 EndGlobal
