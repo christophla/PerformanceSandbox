@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DocumentDB", "DocumentDB", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceSandbox.DocumentDB.WebAPI.IIS", "PerformanceSandbox.DocumentDB.WebAPI.IIS\PerformanceSandbox.DocumentDB.WebAPI.IIS.csproj", "{D0BFCA02-F6F6-47CC-ABE1-3996BCFED1A1}"
 EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "PerformanceSandbox.DocumentDB.WebAPI.IIS.Azure", "PerformanceSandbox.DocumentDB.WebAPI.IIS.Azure\PerformanceSandbox.DocumentDB.WebAPI.IIS.Azure.ccproj", "{BC9A31CD-3762-477C-993D-E865C24B2CB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +78,10 @@ Global
 		{D0BFCA02-F6F6-47CC-ABE1-3996BCFED1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0BFCA02-F6F6-47CC-ABE1-3996BCFED1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0BFCA02-F6F6-47CC-ABE1-3996BCFED1A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC9A31CD-3762-477C-993D-E865C24B2CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC9A31CD-3762-477C-993D-E865C24B2CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC9A31CD-3762-477C-993D-E865C24B2CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC9A31CD-3762-477C-993D-E865C24B2CB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,5 +96,6 @@ Global
 		{47E94CE6-AA80-4C0C-9366-B8B1A42FE51E} = {0E64659B-8FDA-43C8-A7A0-DE0DD5E8DE88}
 		{238F109C-5F3C-42EB-AB2C-2B7FDFBA80D9} = {0E64659B-8FDA-43C8-A7A0-DE0DD5E8DE88}
 		{D0BFCA02-F6F6-47CC-ABE1-3996BCFED1A1} = {859F9615-D4E6-4902-921E-5822EB60B129}
+		{BC9A31CD-3762-477C-993D-E865C24B2CB0} = {859F9615-D4E6-4902-921E-5822EB60B129}
 	EndGlobalSection
 EndGlobal

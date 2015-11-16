@@ -34,21 +34,25 @@ namespace PerformanceSandbox.DocumentDB.WebAPI.IIS.Data
         /// <summary>
         ///     Indicates if the product is active
         /// </summary>
+        [JsonProperty(PropertyName = "archived")]
         public bool Archived { get; set; }
 
         /// <summary>
         ///     The date that the record was created.
         /// </summary>
+        [JsonProperty(PropertyName = "createdAt")]
         public DateTimeOffset CreatedAt { get; internal set; }
 
         /// <summary>
         ///     The user that originally created the record.
         /// </summary>
+        [JsonProperty(PropertyName = "createdBy")]
         public string CreatedBy { get; internal set; }
 
         /// <summary>
         ///     The product description
         /// </summary>
+        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         /// <summary>
@@ -56,25 +60,31 @@ namespace PerformanceSandbox.DocumentDB.WebAPI.IIS.Data
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; internal set; }
+        
+        public long Milliseconds { get; set; }
 
         /// <summary>
         ///     The date that the record was last modified.
         /// </summary>
+        [JsonProperty(PropertyName = "modifiedAt")]
         public DateTimeOffset ModifiedAt { get; internal set; }
 
         /// <summary>
         ///     The user that last modified the record.
         /// </summary>
+        [JsonProperty(PropertyName = "modifiedBy")]
         public string ModifiedBy { get; internal set; }
 
         /// <summary>
         ///     The product name
         /// </summary>
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
         ///     The product quantity available
         /// </summary>
+        [JsonProperty(PropertyName = "quantityAvailable")]
         public int QuantityAvailable { get; set; }
     }
 }

@@ -26,6 +26,7 @@ namespace PerformanceSandbox.DocumentDB.WebAPI.IIS.Data
                     .Where(p => p.Id == id)
                     .AsEnumerable()
                     .FirstOrDefault());
+
         }
 
         public Task<ResourceResponse<Document>> CreateProduct(Product product)

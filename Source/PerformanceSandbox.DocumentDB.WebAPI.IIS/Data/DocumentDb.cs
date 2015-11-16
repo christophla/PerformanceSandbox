@@ -31,7 +31,6 @@ namespace PerformanceSandbox.DocumentDB.WebAPI.IIS.Data
                 {
                     var endpoint = ConfigurationManager.AppSettings["endpoint"];
                     var authKey = ConfigurationManager.AppSettings["authKey"];
-
                     var endpointUri = new Uri(endpoint);
                     _client = new DocumentClient(endpointUri, authKey);
                 }
@@ -43,31 +42,22 @@ namespace PerformanceSandbox.DocumentDB.WebAPI.IIS.Data
 
         private static async Task ReadOrCreateCollection(string databaseLink)
         {
-            var collections = Client.CreateDocumentCollectionQuery(databaseLink)
-                .Where(col => col.Id == _collectionId).ToArray();
+            Collection = Client.CreateDocumentCollectionQuery(databaseLink).Where(col => col.Id == _collectionId).AsEnumerable().FirstOrDefault();
 
-            if (collections.Any())
+            if (Collection == null)
             {
-                Collection = collections.First();
-            }
-            else
-            {
-                Collection = await Client.CreateDocumentCollectionAsync(databaseLink,
-                    new DocumentCollection {Id = _collectionId});
+                var collectionSpec = new DocumentCollection {Id = _collectionId};
+                var requestOptions = new RequestOptions {OfferType = "S1"};
+
+                Collection = await Client.CreateDocumentCollectionAsync(databaseLink, collectionSpec, requestOptions);
             }
         }
 
         private static async Task ReadOrCreateDatabase()
         {
-            var query = Client.CreateDatabaseQuery()
-                .Where(db => db.Id == _databaseId);
+            _database = Client.CreateDatabaseQuery().Where(o => o.Id == _databaseId).AsEnumerable().FirstOrDefault();
 
-            var databases = query.ToArray();
-            if (databases.Any())
-            {
-                _database = databases.First();
-            }
-            else
+            if (_database == null)
             {
                 _database = await Client.CreateDatabaseAsync(new Database {Id = _databaseId});
             }

@@ -10,12 +10,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Faker;
+using Microsoft.Azure.Documents.Client;
+using Microsoft.Azure.Documents.Linq;
 using PerformanceSandbox.DocumentDB.WebAPI.IIS.Data;
 
 namespace PerformanceSandbox.DocumentDB.WebAPI.IIS.Controllers
@@ -23,11 +29,12 @@ namespace PerformanceSandbox.DocumentDB.WebAPI.IIS.Controllers
     public class ProductsController : ApiController
     {
         private const string RetrieveProductRoute = "GetProductById";
+        private static DocumentClient _client;
         private readonly ProductRepository _productRepository;
 
         public ProductsController()
         {
-            _productRepository = new ProductRepository();
+            //_productRepository = new ProductRepository();
         }
 
         /// <summary>
@@ -50,7 +57,40 @@ namespace PerformanceSandbox.DocumentDB.WebAPI.IIS.Controllers
         [ResponseType(typeof (Product))]
         public async Task<HttpResponseMessage> GetSingleAsync(string id)
         {
-            var product = await _productRepository.GetProductAsync(id);
+            var endpoint = ConfigurationManager.AppSettings["endpoint"];
+            var authKey = ConfigurationManager.AppSettings["authKey"];
+            var endpointUri = new Uri(endpoint);
+
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            if (null == _client)
+            {
+                _client = new DocumentClient(endpointUri, authKey);
+            }
+
+            // Get a Database by querying for it by id
+            var db = _client.CreateDatabaseQuery()
+                .Where(d => d.Id == "SandboxDB")
+                .AsEnumerable()
+                .Single();
+
+            // Use that Database's SelfLink to query for a DocumentCollection by id
+            var coll = _client.CreateDocumentCollectionQuery(db.SelfLink)
+                .Where(c => c.Id == "Products")
+                .AsEnumerable()
+                .Single();
+
+            // Use that Collection's SelfLink to query for a DocumentCollection by id
+            var product = await Task.Run(() => _client.CreateDocumentQuery<Product>(coll.SelfLink)
+                .Where(d => d.Id == id)
+                .AsEnumerable()
+                .Single());
+
+            stopwatch.Stop();
+
+            product.Milliseconds = stopwatch.ElapsedMilliseconds;
+
             return Request.CreateResponse(product);
         }
 
